@@ -8,7 +8,7 @@ Installation
 ------------
 
 Like every other npm package, run the command
-`npm install addic7ed-api`
+`npm install addic7ed-api-updated`
 
 
 Usage example
@@ -18,11 +18,29 @@ Search completed subtitles file for South Park season 19 episode 6.
 Download and save the first result.
 
 ```javascript
-var addic7edApi = require('addic7ed-api');
+var addic7edApi = require('addic7ed-api-updated');
 addic7edApi.search('South Park', 19, 6).then(function (subtitlesList) {
     var subInfo = subtitlesList[0];
     if (subInfo) {
         addic7edApi.download(subInfo, './South.Park.S19E06.srt').then(function () {
+            console.log('Subtitles file saved.');
+        });
+    }
+});
+addic7edApi.getShowTitles().then(function(showTitlesList){
+    console.log('All show titles available:', showTitlesList);
+});
+```
+
+Search completed subtitles file for Suits season 9 episode 1 in french.
+Download and save the first result.
+
+```javascript
+var addic7edApi = require('addic7ed-api-updated');
+addic7edApi.search('Suits', 9, 1, 'fre').then(function (subtitlesList) {
+    var subInfo = subtitlesList[0];
+    if (subInfo) {
+        addic7edApi.download(subInfo, './Suits.S09E01.srt').then(function () {
             console.log('Subtitles file saved.');
         });
     }
